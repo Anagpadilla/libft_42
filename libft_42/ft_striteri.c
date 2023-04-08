@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarc4 <anagarc4@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/26 15:33:18 by anagarc4          #+#    #+#             */
+/*   Updated: 2023/03/26 16:00:53 by anagarc4         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+/**
+ * To each character of the string 's', apply the function 'f' with the index
+ * of each character within 's' and the address of the character itself, 
+ * which may be modified if necessary, as parameters.
+ * RETURN: Nothing.
+ * */
+
+#include "libft.h"
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	unsigned int	i;
+
+	if (s != NULL)
+	{
+		i = 0;
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}
+	}
+}
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+void	ft_mymap(unsigned int i, char *c)
+{
+	if (i % 2 == 0)
+		*c = *c + 1;
+	else
+		*c = *c - 1;
+}
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+
+int		main(void)
+{
+	char	str[] = "Manzana Plátano Mango";
+
+	printf("Original string: %s\n", str);
+	ft_striteri(str, ft_mymap);
+	printf("Iterated string: %s\n", str);
+	return (0);
+}
+*/
